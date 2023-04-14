@@ -14,6 +14,8 @@
         <form action="#" th:action="@{/admin/users/add}" th:object="${user}" method="post">
             <p>Nom <input type="text" th:field="*{lastName}" /></p>
             <p>Prenom <input type="text" th:field="*{firstName}" /></p>
+            <p>Mail <input type="text" th:field="*{mail}" /></p>
+            <p>Password <input type="text" th:field="*{password}" /></p>
             <p><input type="submit" value="Enregistrer" /></p>
         </form>
     </main>

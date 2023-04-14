@@ -35,8 +35,8 @@ public class AdminController {
     public String addUser(@ModelAttribute User user, Model model) {
         System.out.println("===> first name = " + user.getFirstName());
         System.out.println("===> last name = " + user.getLastName());
-        user.setMail("");
-        user.setPassword("");
+        user.setMail(user.getMail());
+        user.setPassword(user.getPassword());
         user.setAdmin(false);
         userRepository.save(user);
         return "user_form";
