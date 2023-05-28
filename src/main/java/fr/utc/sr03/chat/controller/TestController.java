@@ -26,4 +26,19 @@ public class TestController {
         });
         return "ok";
     }
+
+
+    @GetMapping("/test2")
+    @ResponseBody // Pour faire sans template html
+    public String test2() {
+
+        return "<h1>ok</h1>";
+    }
+
+    @GetMapping("/test3")
+    @ResponseBody // Pour faire sans template html
+    public String test3(@RequestParam(value = "myName", defaultValue = "World") String name, Model model) {
+
+        return "";
+    }
 }

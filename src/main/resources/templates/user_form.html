@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">//declare the namespace
 <head>
     <title>Users</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="/css/chat.css">//links to a css style sheet
 </head>
 <body>
 <header>header</header>
@@ -12,9 +12,15 @@
     <aside>aside</aside>
     <main>
         <form action="#" th:action="@{/admin/users/add}" th:object="${user}" method="post">
+            <!-- action= URL that will process the information-->
+            <!-- action="#" -> form data submitted to the same URL-->
+            <!-- th:action= actual URL that will process the information thanks to ThymeLeaf (in controller, url with "post")-->
+            <!-- th:action="@{/admin/users/add}" -> form data submitted to /admin/users/add relative to the current context root-->
+            <!-- th:object="${user}" -> model object that the form data should be bound to} -->
             <p>Nom <input type="text" th:field="*{lastName}" /></p>
-            <p>Prenom <input type="text" th:field="*{firstName}" /></p>
+            <p>Prenom <input type="text" th:field="*{firstName}" /></p><!-- th:field =  binding with the model thanks to the @ModelAttribute of the controller -->
             <p>Mail <input type="text" th:field="*{mail}" /></p>
+            <!-- <p>Mail <input type="text" th:field="*{mail}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required /></p> -->
             <p>Password <input type="text" th:field="*{password}" /></p>
             <p><input type="submit" value="Enregistrer" /></p>
         </form>

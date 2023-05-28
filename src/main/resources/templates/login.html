@@ -11,8 +11,17 @@
     <form action="#" th:action="@{/login}" th:object="${user}" method="post">
         <p>mail <input type="text" th:field="*{mail}" /></p>
         <p>mdp <input type="text" th:field="*{password}" /></p>
+        <p> admin <input type="checkbox" th:field="*{admin}" /></p> <!-- checkbox du bool admin -->
+        <p id="error-message" style="display: block;"> Identifiants Incorrects. Veuillez réessayer.</p>
         <p><input type="submit" value="Connexion" /></p>
     </form>
 </div>
+<script>
+    //S'il y a eu une erreur, montrer le message
+    let loginError = /*[[${loginError} ?: false]]*/ false; // placeholder, attend la valeur du serveur. Si il n'y a rien, alors retourne "faux".
+    if (loginError) {
+        document.getElementById('error-message').style.display = 'block';
+    }
+</script>
 </body>
 </html>

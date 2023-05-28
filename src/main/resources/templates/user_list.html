@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Users</title>
@@ -29,4 +29,65 @@
 </div>
 <footer>footer</footer>
 </body>
+</html> -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/chat.css">
+    <script>
+        function onListItemClick(id) {
+            // Unselect previously selected item, if any
+            var oldItem = document.querySelector('.selected');
+            if (oldItem) {
+                oldItem.classList.remove('selected');
+            }
+
+            // Mark the clicked item as selected
+            var newItem = document.getElementById(id);
+            newItem.classList.add('selected');
+
+            // Store the selected user's ID in a hidden field
+            document.getElementById('selectedUserId').value = id;
+        }
+
+        function onButtonClick(action) {
+            document.getElementById('userActionForm').action = action;
+            document.getElementById('userActionForm').submit();
+        }
+    </script>
+</head>
+<body>
+<header>header</header>
+<nav>nav</nav>
+<div class="content">
+    <aside>aside</aside>
+    <main>
+        <ul>
+            <li th:each="user : ${users}" th:id="${user.id}" th:onclick="'onListItemClick(' + ${user.id} + ')'" th:text="${user.lastName} + ' ' + ${user.firstName}"></li>
+        </ul>
+        <!-- Add User -->
+        <form action="#" th:action="@{/admin/users/add}" method="get">
+            <input type="submit" value="Ajouter" />
+        </form>
+
+        <!-- Update User -->
+        <form action="#" th:action="@{/admin/users/update}" method="post">
+            <input type="hidden" id="selectedUserId" name="userId" />
+            <input type="submit" value="Mise à jour" />
+        </form>
+
+        <!-- Delete User -->
+        <form action="#" th:action="@{/admin/users/delete}" method="post">
+            <input type="hidden" id="selectedUserId" name="userId" />
+            <input type="submit" value="Supprimer" />
+        </form>
+    </main>
+</div>
+<footer>footer</footer>
+</body>
 </html>
+
+

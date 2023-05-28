@@ -1,9 +1,9 @@
 package fr.utc.sr03.chat.model;
 
-import javax.persistence.*;
+import javax.persistence.*; //Java Persistance API (JPA)
 
-@Entity
-@Table(name = "sr03_users")
+@Entity //indicates that the class is a JPA entity and will be mapped to a database table.
+@Table(name = "sr03_users")//specifies the name of the database table that corresponds to the entity "User"
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY) // strategy=GenerationType.IDENTITY => obligatoire pour auto increment mysql
@@ -18,8 +18,10 @@ public class User {
     @Column(name = "mail")
     private String mail;
 
+    @Column(name = "password")//maybe should stock pw hash instead?
     private String password;
 
+    @Column(name = "admin")
     private boolean admin;
 
     public User(){}
@@ -72,3 +74,5 @@ public class User {
         this.admin = admin;
     }
 }
+//EntityManager.persist() to save a new user instance to the database
+//EntityManager.find()

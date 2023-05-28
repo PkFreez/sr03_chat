@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .user-details {
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .user-details h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="user-details">
+  <h2>User Details</h2>
+  <p><strong>Mail:</strong> <span th:text="${user.mail}"></span></p>
+  <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+  <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+  <!-- Add more fields as necessary -->
+</div>
+</body>
+</html>
